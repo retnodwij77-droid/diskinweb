@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perhitungan bonus</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #eef5ff;
+        margin: 30px;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        color: #5b8def;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+        color: #4a4a4a;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 2px solid #d6e6ff;
+        border-radius: 8px;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #8bb8ff;
+      }
+
+      button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      button:first-of-type {
+        background-color: #7db7ff;
+        color: white;
+      }
+
+      button:first-of-type:hover {
+        background-color: #5b8def;
+      }
+
+      button:last-of-type {
+        background-color: #cfdfff;
+        color: #333;
+      }
+
+      #hasil {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #f4f8ff;
+        border: 1px solid #d6e6ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Perhitungan Bonus Pembelian</h2>
+
+    <label>Nama Pelanggan</label><br />
+    <input type="text" id="nama" /><br />
+
+    <label>Nama Produk</label><br />
+    <input type="text" id="produk" /><br />
+
+    <label>Harga Produk</label><br />
+    <input type="text" id="harga" /><br />
+
+    <label>Jumlah Pembelian</label><br />
+    <input type="number" id="jumlah" /><br />
+
+    <button onclick="hitung()">Hitung</button>
+    <button onclick="resetData()">Reset</button>
+
+    <div id="hasil"></div>
+
+    <script>
+      function hitung() {
+        let nama = document.getElementById("nama").value;
+        let produk = document.getElementById("produk").value;
+        let harga = Number(document.getElementById("harga").value);
+        let jumlah = Number(document.getElementById("jumlah").value);
+
+        if (nama == "" || produk == "" || harga == "" || jumlah == "") {
+          alert("Semua data harus diisi!");
+          return;
+        }
+
+        let totalBelanja = harga * jumlah;
+        let bonus = 0;
+
+        if (totalBelanja >= 400000) {
+          bonus = 50000;
+        }
+
+        let totalBayar = totalBelanja - bonus;
+
+        document.getElementById("hasil").innerHTML =
+          "<h3>Hasil Perhitungan</h3>" +
+          "<p>Nama Pelanggan : " +
+          nama +
+          "</p>" +
+          "<p>Nama Produk : " +
+          produk +
+          "</p>" +
+          "<p>Total Belanja : Rp " +
+          totalBelanja +
+          "</p>" +
+          "<p>Potongan : Rp " +
+          bonus +
+          "</p>" +
+          "<p>Total Bayar : Rp " +
+          totalBayar +
+          "</p>";
+      }
+
+      function resetData() {
+        document.getElementById("nama").value = "";
+        document.getElementById("produk").value = "";
+        document.getElementById("harga").value = "";
+        document.getElementById("jumlah").value = "";
+        document.getElementById("hasil").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
+l
